@@ -7,10 +7,6 @@
 
 #Note that in this dataset missing values are coded as ?.
 
-#setClass('myDate')
-#setAs("character","myDate", function(from) as.Date(from, format="%d/%m/%Y") )
-#hpc <- read.table("~/Coursera/Exploratory Data Analysis/household_power_consumption.txt", sep=";", colClasses=c('myDate'))
-#hpc <- hpc[hpc$Date >= "2007-02-01" & hpc$Date <= '2007-02-03',]
 
 fn_GetData <- function(){
   fn_PkgTest("sqldf")
@@ -19,13 +15,7 @@ fn_GetData <- function(){
   file = "household_power_consumption.txt"
   if (!file.exists(file))
   {
-    #url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-    #temp <- tempfile()
-    cat("File not found.","\n")
-    #download.file(url,temp)
-    #cat("Extracting zip archive.. ", url,"\n")
-    #unzip(temp)
-    #unlink(temp)
+    cat("Data file not found.","\n")
   }
   mySql <- "SELECT * from file WHERE Date = '1/2/2007' OR Date = '2/2/2007'"
   hpc <- read.csv.sql(file,sql=mySql,sep=";")
